@@ -1,0 +1,29 @@
+:root {
+  --color-primary: #D1DEEA; /* azul pastel */
+  --color-secondary: #D2E4E3; /* verde menta */
+  --color-tertiary: #ADCEC6; /* verde médio */
+  --color-neutral: #9FAEB3; /* cinza azulado */
+
+  --color-contrast-light: #ffffff; /* branco puro */
+  --color-contrast-dark: #2C3E50; /* azul petróleo escuro */
+
+  /* Usos práticos */
+  --bg-color: var(--color-primary);
+  --text-color: var(--color-contrast-dark);
+  --card-bg: var(--color-secondary);
+  --button-bg: var(--color-tertiary);
+  --button-text: var(--color-contrast-dark);
+}
+
+[data-theme="dark"] {
+  /* Paleta adaptada para modo escuro */
+  --bg-color: #2C3E50; /* fundo escuro */
+  --text-color: #EAEFF2; /* texto claro */
+  --card-bg: #34495E; /* cinza azulado escuro */
+  --button-bg: #9FAEB3; /* cinza médio da paleta */
+  --button-text: #ffffff; /* branco para contraste */
+
+  /* Contrastes adicionais para modo escuro */
+  --color-contrast-light: #EAEFF2; /* cinza claro */
+  --color-contrast-dark: #111111; /* preto profundo */
+}
