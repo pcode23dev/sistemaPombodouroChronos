@@ -1,36 +1,49 @@
 import "./styles/global.css";
-import "./styles/tema.css";
+import "./styles/theme.css";
+import MenuMobile from "./components/MenuMobile";
+import Headding from "./components/Headding";
+import Header from "./components/Header";
+import CountDown from "./components/CountDown";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function App() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen bg-bg-color text-text-color">
-      <div>
-        <nav className="hidden md:block">
-          <ul className="flex justify-around py-2">
-            <li>Historico</li>
-            <li>Home</li>
-            <li>Ajustes</li>
-            <li>Perfil</li>
-          </ul>
-        </nav>
-      </div>
-      <div id="headerMobile">
-        <h1 className="text-2xl font-bold text-center">Chronos Pombodouro</h1>
-      </div>
-      <div id="section">
-        <h2 className="text-xl font-semibold text-center">
-          Bem-vindo ao Chronos Pombodouro!
-        </h2>
-      </div>
-      <div id="footerMenuMobile" className="md:hidden">
-        <nav id="menuMobile" className="">
-          <ul className="flex justify-around py-2">
-            <li>Home</li>
-            <li>Historico</li>
-            <li>Ajustes</li>
-            <li>Perfil</li>
-          </ul>
-        </nav>
+    <div className="relative">
+      <div className="container mx-auto">
+        <Header tittle="Chronos">
+          <Headding>
+            <p className="text-sm">bntye  Clique em start para iniciar tarefa</p>
+          </Headding>
+        </Header>
+        <CountDown />
+        <div className="py-2">
+          <form className="flex flex-col items-center text-center text-xl gap-y-4">
+            <div className="border border-gray-500 rounded p-4">
+              <label htmlFor="tarefa" className="flex flex-col items-start gap-y-2">
+                <span className="text-sm">Tarefa:</span>
+                <input
+                  type="text"
+                  id="tarefa"
+                  className="rounded-2 text-[1.2rem] text-gray-500 outline-none w-75 "
+                  placeholder="Fazer uma corrida"
+                />
+              </label>
+            </div>
+            <div>
+              <p className="text-[1.1rem] w-90">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </div>
+            <div className="">
+              <button
+                type="button"
+                className="text-5xl cursor-pointer hover:bg-green-900 bg-green-700 text-gray-900 h-20 w-20 rounded-full transition-colors"
+              >
+                <FontAwesomeIcon className="" icon={faPlayCircle} />
+              </button>
+            </div>
+          </form>
+        </div>
+        <MenuMobile />
       </div>
     </div>
   );
