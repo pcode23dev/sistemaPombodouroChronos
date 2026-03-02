@@ -8,7 +8,7 @@ export default function Header({ children , tittle}: ElementChildrenProps) {
     <>
       <div className="flex flex-col justify-content-center justify-center items-center gap-2 p-6">
         <FontAwesomeIcon className="text-7xl" icon={faClock}></FontAwesomeIcon>
-        <h2 className="text-4xl py-4">{tittle}</h2>
+        <h2 className="text-4xl py-2">{tittle}</h2>
         {children}
       </div>
     </>
