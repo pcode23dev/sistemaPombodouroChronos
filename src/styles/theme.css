@@ -50,13 +50,28 @@
   --button-text: var(--text-over-primary);
 }
 
-[data-theme="dark"] {
+:root[data-theme="light"] {
+  /* Escala de cinzas invertida */
+  --gray-100: #0a0f1a; /* antes era o mais escuro */
+  --gray-200: #181f2e;
+  --gray-300: #272f43;
+  --gray-400: #363d56;
+  --gray-500: #454f6a;
+  --gray-600: #555f7d;
+  --gray-700: #aab3cc;
+  --gray-800: #cdd3e1;
+  --gray-900: #e6e9f0; /* agora é o mais claro */
+
   /* Fundo e contraste - modo escuro */
   --bg-color: var(--gray-900);
   --card-bg: var(--gray-700);
   --text-color: var(--gray-100);
   --button-bg: var(--primary-light);
   --button-text: var(--text-over-primary-dark);
+
+    /* Texto padrão */
+  --text-default: #181f2e;
+  --text-muted: #aab3cc;
 
   /* Ajustes de estados para contraste */
   --success: #16a34a;

@@ -7,7 +7,7 @@ export default function DefaultInput({ id, type, tittle, ...rest }: DefaultInput
   return (
     <div className="border border-gray-500 rounded p-4 border-b-green-900 border-b-4">
       <label htmlFor={id} className="flex flex-col items-start gap-y-2">
-        <span className="text-sm">{tittle ? tittle : "labelText"}</span>
+        <span className="text-sm">{tittle?.trim() ? tittle : "labelText"}</span>
         <input
           type={type}
           id={id}
