@@ -1,6 +1,6 @@
 import type React from "react"
 
-export type ElementChildrenProps = {
+export type ElementChildrenTitleProps = {
     children: React.ReactNode;
     tittle?: string;
 }

@@ -1,12 +1,9 @@
-import Headding from "../components/header/Headding";
+import Headding from "../components/headding/Headding";
 import MenuMobile from "../components/menuMobile/MenuMobile";
+import type { ElementChildrenTitleProps } from "../types/ElementChildrenTitleProps";
 
 
-type MainTempleteProps = {
-  children: React.ReactNode;
-};
-
-export default function MainTemplete({ children }: MainTempleteProps) {
+export default function MainTemplete({ children }: ElementChildrenTitleProps) {
   return (
     <div className="relative">
       <div className="container mx-auto">

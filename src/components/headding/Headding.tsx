@@ -1,11 +1,9 @@
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { ElementChildrenTitleProps } from "../../types/ElementChildrenTitleProps";
 
-type HeaddingProps = {
-  tittle?: string;
-  children: React.ReactNode;
-};
-export default function Headding({ children , tittle}: HeaddingProps) {
+
+export default function Headding({ children , tittle}: ElementChildrenTitleProps) {
   return (
     <>
       <div className="flex flex-col justify-content-center justify-center items-center gap-2 p-6">

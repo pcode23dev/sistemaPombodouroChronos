@@ -1,5 +1,5 @@
 
-export default function TableHistorico(){
+export default function TabelaHistorico(){
     return(
         <table>
             <thead>

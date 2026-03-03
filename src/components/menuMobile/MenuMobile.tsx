@@ -35,7 +35,7 @@ export default function MenuMobile() {
   }, [theme]);
 
   return (
-    <div className="fixed bottom-0 right-0 left-0">
+    <div className="fixed bottom-0 right-0 left-0 sm:w-100 sm:mx-auto">
       <nav id="menuMobile" className="">
         <ul className="grid grid-cols-4 text-center">
           <li

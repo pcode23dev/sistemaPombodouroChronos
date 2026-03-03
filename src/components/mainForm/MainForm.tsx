@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DefaultInput from "../defaultInput/DefaultInput";
-import Circles from "../arrayCiloPomodoro/Circles";
-import DefaulButton from "../defaultBotao/DefaulButton";
+import Circles from "../circles/Circles";
+import DefaulButton from "../defaulButton/DefaulButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlayCircle,
