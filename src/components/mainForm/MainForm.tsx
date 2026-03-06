@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DefaultInput from "../defaultInput/DefaultInput";
 import Circles from "../circles/Circles";
 import DefaulButton from "../defaulButton/DefaulButton";
@@ -22,23 +22,38 @@ export default function Mainform() {
     "Pausa Longa",
   ];
 
-  const checkStates = () => {
-    setCicloCount((prev) => (prev >= 8 ? 0 : prev + 1));
-    setIsRunActivite(true);
-    console.log("number", cicloCount);
-  };
-
   const cancelActivity = () => {
     setIsRunActivite(false);
     if (cicloCount == 8) {
       setCicloCount(0);
     }
   };
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCicloCount((prev) => (prev >= 8 ? 0 : prev + 1));
+    setIsRunActivite(true);
+    console.log("number", cicloCount);
+  };
+
+  const [inputValue, setInputValue] = useState<string>("");
+
+  useEffect(() => {
+    console.log("InputValue: ", inputValue);
+  }, [inputValue]);
 
   return (
-    <form className="flex flex-col items-center text-center text-xl gap-y-5">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center text-center text-xl gap-y-5"
+    >
       {cicloCount === 0 && (
-        <DefaultInput id="tarefa" type="text" tittle="Tarefa" />
+        <DefaultInput
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          id="tarefa"
+          type="text"
+          tittle="Tarefa"
+        />
       )}
       <p className="text-[1.1rem] w-90">
         {cicloCount == 0
@@ -49,13 +64,14 @@ export default function Mainform() {
       {isRunActivite ? (
         <DefaulButton
           onClick={cancelActivity}
+          type="button"
           color="bg-red-500"
           icon={<FontAwesomeIcon icon={faStopCircle} />}
         />
       ) : (
         <DefaulButton
-          onClick={checkStates}
           color="bg-green-500"
+          type="submit"
           icon={<FontAwesomeIcon icon={faPlayCircle} />}
         />
       )}
