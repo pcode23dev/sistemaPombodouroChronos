@@ -1,6 +1,6 @@
 import type React from "react";
 import { TaskContext } from "./TaskContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { inicialState } from "./inicialStateValue";
 
 type TaskContextProviderProps = {
@@ -11,6 +11,10 @@ export default function TaskContextProvider({
   children,
 }: TaskContextProviderProps) {
   const [state, setState] = useState(inicialState);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <>
