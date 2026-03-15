@@ -44,7 +44,7 @@ export default function Mainform() {
         activeTask: novaTarefa,
         currentCiclo: nextCicle,
         secandsEmAndamento: novaTarefa.duracao * 60,
-        formatedSecandsEmAndamento: formatSecondsRemaind(novaTarefa.duracao),
+        formatedSecandsEmAndamento: formatSecondsRemaind(novaTarefa.duracao*60),
         task: [...prev.task, novaTarefa],
       };
     });

@@ -1,10 +1,5 @@
 export default function formatSecondsRemaind(seconds: number): string {
-    seconds*=60;
-    
-    const h = seconds/60;
-    const s = seconds - (h*60);
-    console.log("h: ",h);
-    console.log("s: ",s);
-    
-    return h +":"+s;
+    const min = String(Math.floor(seconds/60)).padStart(2,'0');
+    const s = String(Math.floor(seconds%60)).padStart(2,'0');
+    return `${min}:${s}`;
 }
