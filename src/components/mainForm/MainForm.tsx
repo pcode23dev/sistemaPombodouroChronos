@@ -4,7 +4,8 @@ import Circles from "../circles/Circles";
 import DefaulButton from "../defaulButton/DefaulButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlayCircle
+  faPlayCircle,
+  faStopCircle,
 } from "@fortawesome/free-regular-svg-icons";
 import type { TaskModel } from "../../models/TaskModels";
 import { useTaskContext } from "../../contexts/taskContext/useTaskContext";
@@ -18,12 +19,27 @@ export default function Mainform() {
   const nextCicle = getNextCicle(state.currentCiclo);
   const nextCileType = getNextCicleType(nextCicle);
 
-  console.log("Proximo ciclo: ", nextCicle);
+  const hendleStopBtn = () => {
+    console.log("Interrompendo Actividade...");
+    setState((prev) => {
+      return {
+        ...prev,
+        activeTask: null,
+        secandsEmAndamento: 0,
+        formatedSecandsEmAndamento: formatSecondsRemaind(0),
+        task: prev.task.map((t) => {
+          if (prev.activeTask && prev.activeTask.id === t.id)
+            return { ...t, interuptDate: Date.now() };
+          return t;
+        }),
+      };
+    });
+  };
 
   const handleCreateTask = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputValue.trim() == "") {
-      console.log("Digite a tarefa");
+      alert("Digite a tarefa");
       return;
     }
 
@@ -44,7 +60,9 @@ export default function Mainform() {
         activeTask: novaTarefa,
         currentCiclo: nextCicle,
         secandsEmAndamento: novaTarefa.duracao * 60,
-        formatedSecandsEmAndamento: formatSecondsRemaind(novaTarefa.duracao*60),
+        formatedSecandsEmAndamento: formatSecondsRemaind(
+          novaTarefa.duracao * 60,
+        ),
         task: [...prev.task, novaTarefa],
       };
     });
@@ -67,18 +85,31 @@ export default function Mainform() {
         id="tarefa"
         type="text"
         tittle="Tarefa"
+        disabled={state.activeTask != null}
       />
-      <p className="text-[1.1rem] w-90">
-        {nextCicle == 0 ? "Clique em start para começar" : (nextCileType)}
-      </p>
 
-      <Circles />
+      {state.currentCiclo > 0 && <Circles />}
 
-      <DefaulButton
-        color="bg-green-500"
-        type="submit"
-        icon={<FontAwesomeIcon icon={faPlayCircle} />}
-      />
+      {state.activeTask ? (
+        <DefaulButton
+          key="Interromper tarefa actual"
+          aria-label="Interromper tarefa actual"
+          title="Interromper tarefa actual"
+          color="bg-red-400"
+          type="button"
+          onClick={hendleStopBtn}
+          icon={<FontAwesomeIcon icon={faStopCircle} />}
+        />
+      ) : (
+        <DefaulButton
+          key="Avançar tarefa actual"
+          aria-label="Avançar tarefa actual"
+          title="Avançar tarefa actual"
+          color="bg-green-400"
+          type="submit"
+          icon={<FontAwesomeIcon icon={faPlayCircle} />}
+        />
+      )}
     </form>
   );
 }

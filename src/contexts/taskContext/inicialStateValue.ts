@@ -7,7 +7,7 @@ export const inicialState: TaskStatesModels = {
   activeTask: null,
   currentCiclo: 0,
   config: {
-    workTime: 25,
+    workTime: 28,
     sortBreak: 5,
     longBreak: 15,
   },
